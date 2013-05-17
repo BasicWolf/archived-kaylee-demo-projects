@@ -1,0 +1,1 @@
+from .humanocr import HumanOcr

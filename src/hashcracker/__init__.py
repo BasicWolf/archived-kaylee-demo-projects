@@ -1,0 +1,1 @@
+from .hashcracker import HashCracker
