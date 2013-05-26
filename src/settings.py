@@ -1,3 +1,5 @@
+import os
+
 # Indicates whether Kaylee will automatically return a next action
 # when a result is accepted from a node.
 AUTO_GET_ACTION = True
@@ -6,7 +8,7 @@ AUTO_GET_ACTION = True
 SECRET_KEY = '.^QKJAZyt(jYR<iZ(J+YzYs?t7WWblh%'
 
 # A directory in which Kaylee searches for user projects
-PROJECTS_DIR = '/home/zaur/Documents/projects/kaylee-demo-projects/myenv'
+PROJECTS_DIR = os.path.dirname(__file__)
 
 # Nodes registry configuration
 REGISTRY = {
@@ -87,12 +89,11 @@ app_hash_cracker_simple = {
 #     'project' : {
 #         'name' : 'HumanOCRProject',
 #         'config' : {
-#             'script'      : '/static/projects/human_ocr/js/human_ocr.js',
-#             'styles'      : '/static/projects/human_ocr/css/human_ocr.css',
-#             'img_dir_url' : '/static/tmp/human_ocr/',
-#             'img_dir'     : os.path.join(STATIC_DIR, 'tmp/human_ocr/'),
-#             'font_path'   : ('/usr/share/fonts/truetype/ttf-dejavu/'
-#                              'DejaVuSans.ttf'),
+#             'script'      : '/static/humanocr/js/humanocr.js',
+#             'styles'      : '/static/humanocr/css/humanocr.css',
+#             'img_dir_url' : '/static/tmp/humanocr/',
+#             'img_dir'     : os.path.join(os.path.dirname(__file__), '_build/humanocr/tmp/'),
+#             'font_path'   : '/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf',
 #         },
 #     },
 #     'controller' : {
@@ -106,7 +107,7 @@ app_hash_cracker_simple = {
 
 # Add the applications' configurations here
 APPLICATIONS = [
+#    app_human_ocr_simple,
     app_hash_cracker_simple,
 #    app_hash_cracker_comparator,
-#    app_human_ocr_simple,
 ]

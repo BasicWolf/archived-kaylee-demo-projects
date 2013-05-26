@@ -10,6 +10,4 @@ cp -r src/* demo_env
 
 # build the projects
 cd demo_env
-python klmanage.py build
-
-
+python klmanage.py build || exit 1;
