@@ -1,5 +1,7 @@
 import os
 
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+
 # Indicates whether Kaylee will automatically return a next action
 # when a result is accepted from a node.
 AUTO_GET_ACTION = True
@@ -8,7 +10,7 @@ AUTO_GET_ACTION = True
 SECRET_KEY = '.^QKJAZyt(jYR<iZ(J+YzYs?t7WWblh%'
 
 # A directory in which Kaylee searches for user projects
-PROJECTS_DIR = os.path.dirname(__file__)
+PROJECTS_DIR = CURRENT_DIR
 
 # Nodes registry configuration
 REGISTRY = {
@@ -83,31 +85,31 @@ app_hash_cracker_simple = {
 }
 
 
-# app_human_ocr_simple = {
-#     'name' : 'human_ocr.1',
-#     'description' : 'Involves a human in image recognition',
-#     'project' : {
-#         'name' : 'HumanOCRProject',
-#         'config' : {
-#             'script'      : '/static/humanocr/js/humanocr.js',
-#             'styles'      : '/static/humanocr/css/humanocr.css',
-#             'img_dir_url' : '/static/tmp/humanocr/',
-#             'img_dir'     : os.path.join(os.path.dirname(__file__), '_build/humanocr/tmp/'),
-#             'font_path'   : '/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf',
-#         },
-#     },
-#     'controller' : {
-#         'name' : 'SimpleController',
-#         'permanent_storage' : {
-#             'name' : 'MemoryPermanentStorage',
-#         },
-#     }
-# }
+app_human_ocr_simple = {
+    'name' : 'human_ocr.1',
+    'description' : 'Involves a human in image recognition',
+    'project' : {
+        'name' : 'HumanOCR',
+        'config' : {
+            'script'      : '/static/humanocr/js/humanocr.js',
+            'styles'      : '/static/humanocr/css/humanocr.css',
+            'img_dir_url' : '/static/humanocr/tmp/',
+            'img_dir'     : os.path.join(CURRENT_DIR, '_build/humanocr/tmp/'),
+            'font_path'   : '/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf',
+        },
+    },
+    'controller' : {
+        'name' : 'SimpleController',
+        'permanent_storage' : {
+            'name' : 'MemoryPermanentStorage',
+        },
+    }
+}
 
 
 # Add the applications' configurations here
 APPLICATIONS = [
-#    app_human_ocr_simple,
-    app_hash_cracker_simple,
+    app_human_ocr_simple,
+#    app_hash_cracker_simple,
 #    app_hash_cracker_comparator,
 ]

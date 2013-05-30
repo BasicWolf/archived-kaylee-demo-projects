@@ -1,1 +1,1 @@
-from .humanocr import HumanOcr
+from .humanocr import HumanOCR

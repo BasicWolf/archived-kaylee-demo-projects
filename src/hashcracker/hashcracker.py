@@ -3,10 +3,9 @@ from kaylee.project import Project, AUTO_PROJECT_MODE
 from kaylee.errors import InvalidResultError
 
 class HashCracker(Project):
-    mode = AUTO_PROJECT_MODE
 
     def __init__(self, *args, **kwargs):
-        super(HashCracker, self).__init__(*args, **kwargs)
+        super(HashCracker, self).__init__(mode=AUTO_PROJECT_MODE, *args, **kwargs)
 
         self.alphabet = kwargs['alphabet']
         self.key_length  = kwargs['key_length']

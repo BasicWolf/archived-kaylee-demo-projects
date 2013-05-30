@@ -8,21 +8,21 @@ from kaylee.project import Project, MANUAL_PROJECT_MODE
 from kaylee.util import random_string
 from kaylee.errors import InvalidResultError
 
-WORDS = 'Lorem ipsum dolor sit amet'.split(' ')
 
 
-class HumanOcr(Project):
-    mode = MANUAL_PROJECT_MODE
+
+class HumanOCR(Project):
+    SENTENCE = 'Lorem ipsum dolor sit amet'
 
     def __init__(self, *args, **kwargs):
-        super(HumanOcr, self).__init__(*args, **kwargs)
+        super(HumanOCR, self).__init__(mode=MANUAL_PROJECT_MODE, *args, **kwargs)
 
         self.font_path = kwargs['font_path']
         self.img_dir = kwargs['img_dir']
         self.img_dir_url = kwargs['img_dir_url']
 
-        self.lipsum_words = LIPSUM.split(' ')
-        self.tasks_count = len(self.lipsum_words) * 3
+        self.words_to_recognize = self.SENTENCE.split()
+        self.tasks_count = len(self.words_to_recognize) * 3
         self._tasks_counter = 0
 
         try:
@@ -33,8 +33,8 @@ class HumanOcr(Project):
                 raise e
 
     def __getitem__(self, task_id):
-        word = self.lipsum_words[int(task_id)]
-        rstr = random_string(4)
+        word = self.words_to_recognize[int(task_id)]
+        rstr = random_string(4, special=False)
         img = self._generate_image(word, rstr, self.font_path)
         img_path = self._save_image(img, self.img_dir)
         url = os.path.join(self.img_dir_url, os.path.basename(img_path))
@@ -48,7 +48,7 @@ class HumanOcr(Project):
 
     def next_task(self):
         if self._tasks_counter < self.tasks_count:
-            task = self[self._tasks_counter % len(self.lipsum_words)]
+            task = self[self._tasks_counter % len(self.words_to_recognize)]
             self._tasks_counter += 1
             return task
         else:
