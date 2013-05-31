@@ -2,7 +2,7 @@ pj = kl.pj
 
 pj.init = (app_config) ->
     pj.config = app_config
-    kl.include(app_config.md5_script, kl.project_imported.trigger)
+    kl.include(app_config.md5_script, kl.project_imported.trigger, kl.error)
     return
 
 pj.process_task = (task) ->

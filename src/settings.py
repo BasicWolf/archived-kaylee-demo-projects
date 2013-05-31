@@ -28,37 +28,6 @@ SESSION_DATA_MANAGER = {
 
 
 
-# app_hash_cracker_comparator = {
-#     'name' : 'hash_cracker.1',
-#     'description' : 'Crack a salted hash',
-#     'project' : {
-#         'name' : 'HashCracker',
-#         'config' : {
-#             'script'        : '/static/projects/hash_cracker/js/hash_cracker.js',
-#             'md5_script'    : '/static/projects/hash_cracker/js/md5.js',
-#             'hash_to_crack' : '71eebe6997feec5cd4d570c1b15ae786', # md5('klsalt')
-#             'salt'          : 'salt',
-#             'alphabet'      : 'abcdefghijklmnopqrstuvwxyz',
-#             # although knowing the length of the key is a cheat,
-#             # but it's fine enough for demo purposes
-#             'key_length'    : 2,
-#             'hashes_per_task' : 100,
-#         },
-#     },
-#     'controller' : {
-#         'name' : 'ResultsComparatorController',
-#         'config' : {
-#             'results_count_threshold' : 2
-#         },
-#         'temporal_storage' : {
-#             'name' : 'MemoryTemporalStorage',
-#         },
-#         'permanent_storage' : {
-#             'name' : 'MemoryPermanentStorage',
-#         },
-#     }
-# }
-
 app_hash_cracker_simple = {
     'name' : 'hash_cracker.1',
     'description' : 'Crack a salted hash',
@@ -78,6 +47,39 @@ app_hash_cracker_simple = {
     },
     'controller' : {
         'name' : 'SimpleController',
+        'permanent_storage' : {
+            'name' : 'MemoryPermanentStorage',
+        },
+    }
+}
+
+
+
+app_hash_cracker_comparator = {
+    'name' : 'hash_cracker.1',
+    'description' : 'Crack a salted hash',
+    'project' : {
+        'name' : 'HashCracker',
+        'config' : {
+            'script'        : '/static/hash_cracker/js/hash_cracker.js',
+            'md5_script'    : '/static/hash_cracker/js/md5.js',
+            'hash_to_crack' : '71eebe6997feec5cd4d570c1b15ae786', # md5('klsalt')
+            'salt'          : 'salt',
+            'alphabet'      : 'abcdefghijklmnopqrstuvwxyz',
+            # although knowing the length of the key is a cheat,
+            # but it's fine enough for demo purposes
+            'key_length'    : 2,
+            'hashes_per_task' : 100,
+        },
+    },
+    'controller' : {
+        'name' : 'ResultsComparatorController',
+        'config' : {
+            'results_count_threshold' : 2
+        },
+        'temporal_storage' : {
+            'name' : 'MemoryTemporalStorage',
+        },
         'permanent_storage' : {
             'name' : 'MemoryPermanentStorage',
         },
@@ -109,7 +111,7 @@ app_human_ocr_simple = {
 
 # Add the applications' configurations here
 APPLICATIONS = [
-    app_human_ocr_simple,
+#    app_human_ocr_simple,
 #    app_hash_cracker_simple,
-#    app_hash_cracker_comparator,
+    app_hash_cracker_comparator,
 ]
