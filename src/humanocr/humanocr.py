@@ -9,8 +9,6 @@ from kaylee.util import random_string
 from kaylee.errors import InvalidResultError
 
 
-
-
 class HumanOCR(Project):
     SENTENCE = 'Lorem ipsum dolor sit amet'
 

@@ -2,7 +2,8 @@
 
 DEMO_DIR="demo"
 
-command -v kaylee-admin.py >/dev/null 2>&1 || { echo >&2 "I require Kaylee, but it's not installed. Aborting."; exit 1; }
+command -v kaylee-admin.py >/dev/null 2>&1 || { echo >&2 "I require Kaylee, but it has not been found. Aborting."; exit 1; }
+command -v coffee >/dev/null 2>&1 || { echo >&2 "I require CoffeeScript compiler, but it has not been found. Aborting."; exit 1; }
 
 run() {
     python klmanage.py build || exit 1;

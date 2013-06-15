@@ -28,13 +28,38 @@ SESSION_DATA_MANAGER = {
 
 
 
+app_mcpi = {
+    'name' : 'mcpi',
+    'description' : 'Find value of Pi via the Monte-Carlo method.',
+
+    'project' : {
+        'name' : 'MonteCarloPi',
+        'config' : {
+            'script_url' : '/static/montecarlopi/js/montecarlopi.js',
+            'alea_script' : '/static/montecarlopi/js/alea.js',
+            'random_points' : 1000000,
+            'tasks_count' : 10
+        },
+    },
+
+    'controller' : {
+        'name' : 'SimpleController',
+
+        'permanent_storage' : {
+            'name' : 'MemoryPermanentStorage',
+        }
+    }
+
+}
+
+
 app_hash_cracker_simple = {
     'name' : 'hash_cracker.1',
     'description' : 'Crack a salted hash',
     'project' : {
         'name' : 'HashCracker',
         'config' : {
-            'script'        : '/static/hashcracker/js/hashcracker.js',
+            'script_url'    : '/static/hashcracker/js/hashcracker.js',
             'md5_script'    : '/static/hashcracker/js/md5.js',
             'hash_to_crack' : '71eebe6997feec5cd4d570c1b15ae786', # md5('klsalt')
             'salt'          : 'salt',
@@ -54,15 +79,14 @@ app_hash_cracker_simple = {
 }
 
 
-
 app_hash_cracker_comparator = {
     'name' : 'hash_cracker.1',
     'description' : 'Crack a salted hash',
     'project' : {
         'name' : 'HashCracker',
         'config' : {
-            'script'        : '/static/hash_cracker/js/hash_cracker.js',
-            'md5_script'    : '/static/hash_cracker/js/md5.js',
+            'script_url'    : '/static/hashcracker/js/hashcracker.js',
+            'md5_script'    : '/static/hashcracker/js/md5.js',
             'hash_to_crack' : '71eebe6997feec5cd4d570c1b15ae786', # md5('klsalt')
             'salt'          : 'salt',
             'alphabet'      : 'abcdefghijklmnopqrstuvwxyz',
@@ -93,7 +117,7 @@ app_human_ocr_simple = {
     'project' : {
         'name' : 'HumanOCR',
         'config' : {
-            'script'      : '/static/humanocr/js/humanocr.js',
+            'script_url'  : '/static/humanocr/js/humanocr.js',
             'styles'      : '/static/humanocr/css/humanocr.css',
             'img_dir_url' : '/static/humanocr/tmp/',
             'img_dir'     : os.path.join(CURRENT_DIR, '_build/humanocr/tmp/'),
@@ -111,7 +135,8 @@ app_human_ocr_simple = {
 
 # Add the applications' configurations here
 APPLICATIONS = [
+    app_mcpi,
 #    app_human_ocr_simple,
 #    app_hash_cracker_simple,
-    app_hash_cracker_comparator,
+#    app_hash_cracker_comparator,
 ]
