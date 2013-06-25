@@ -22,7 +22,7 @@ REGISTRY = {
 
 # Session data manager configuration
 SESSION_DATA_MANAGER = {
-    'name' : 'NodeSessionDataManager',
+    'name' : 'ClientSessionDataManager',
     'config' : {}
 }
 
@@ -49,7 +49,29 @@ app_mcpi = {
             'name' : 'MemoryPermanentStorage',
         }
     }
+}
 
+
+app_pp1 = {
+    'name' : 'ping-pong',
+    'description' : 'Ping a client and get a pong response',
+
+    'project' : {
+        'name' : 'PingPong',
+        'config' : {
+            'script_url' : '/static/pingpong/js/pingpong.js',
+            'pong_latency' : 1000, # ms
+            'tasks_count' : 1000
+        },
+    },
+
+    'controller' : {
+        'name' : 'SimpleController',
+
+        'permanent_storage' : {
+            'name' : 'MemoryPermanentStorage',
+        }
+    }
 }
 
 
@@ -135,7 +157,8 @@ app_human_ocr_simple = {
 
 # Add the applications' configurations here
 APPLICATIONS = [
-    app_mcpi,
+    app_pp1
+#    app_mcpi,
 #    app_human_ocr_simple,
 #    app_hash_cracker_simple,
 #    app_hash_cracker_comparator,
