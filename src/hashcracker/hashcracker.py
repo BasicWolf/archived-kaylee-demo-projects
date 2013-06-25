@@ -41,7 +41,9 @@ class HashCracker(Project):
     def normalize_result(self, task_id, result):
         try:
             key = result['cracked_key']
-            if md5(key + self.salt).hexdigest() == self.hash_to_crack:
+            test_val = (key + self.salt).encode('utf-8')
+            if md5(test_val).hexdigest() == self.hash_to_crack:
+                print('here')
                 return key
             raise InvalidResultError(result, 'Invalid cracked hash key')
         except KeyError:

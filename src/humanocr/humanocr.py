@@ -2,7 +2,7 @@ import os
 import errno
 import random
 import tempfile
-import Image, ImageFont, ImageDraw
+from PIL import  Image, ImageFont, ImageDraw
 
 from kaylee.project import Project, MANUAL_PROJECT_MODE
 from kaylee.util import random_string

@@ -24,4 +24,4 @@ pj.process_task = function(task) {
     kl.task_completed.trigger({pi: pi});
 };     
 
- }());
+}());

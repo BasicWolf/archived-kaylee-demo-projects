@@ -22,13 +22,13 @@ class MonteCarloPi(Project):
         else:
             return None
 
-    def normalize_result(self, task_id, data):
+    def normalize_result(self, task_id, result):
         try:
-            return data['pi']
+            return result['pi']
         except KeyError:
-            raise InvalidResultError(data, '"pi" key was not found')
+            raise InvalidResultError(result, '"pi" key was not found')
 
-    def result_stored(self, task_id, data, storage):
+    def result_stored(self, task_id, result, storage):
         if len(storage) == self.tasks_count:
             self.completed = True
             self._announce_results(storage)
